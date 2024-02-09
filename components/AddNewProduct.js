@@ -16,11 +16,33 @@ const AddNewProduct= () => {
     }
 
     const handleClickBtn = () => {
-        let object = (name, price, size, color) => {
+        // let object = {
+        //     name, price, size, color
+        // }
 
+        let object = {
+            name1: name,
+            price: price,
+            size: size,
+            color: color
         }
-        console.log(">> check data", object )
+
+        let productList = localStorage.getItem("productList");
+        if(productList) {
+            let arr = JSON.parse(productList)
+            arr.push(object)
+            localStorage.setItem("productList", JSON.stringify(arr))
+        } else {
+            localStorage.setItem("productList", JSON.stringify([object]))
+        }
+
+        setName("");
+        setPrice(0);
+        setSize(0);
+        setColor("");
     }
+
+
 
     return (
         <div>
@@ -61,8 +83,18 @@ const AddNewProduct= () => {
             {
                 isShowDetail === true ? <div onClick={() => handleHideForm(false)}> Hire this form </div> : <div onClick={() => handleHideForm(true)}> Show the form </div>
             }
+
+            <div>
+                Product list:
+                <div>
+                    {localStorage.getItem("productList")}
+                </div>
+            </div>
+
+
             
         </div>
+
 
 
     ) 
