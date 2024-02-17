@@ -8,6 +8,7 @@ import Nav from './components/Navigation/Nav.js';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Router } from 'react-router-dom/cjs/react-router-dom.js';
 
+
 function App() {
 
   const x = [1, 2, 3, 4, { name: 'hải' }];
@@ -46,6 +47,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;
